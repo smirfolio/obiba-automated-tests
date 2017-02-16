@@ -37,12 +37,4 @@ public class StudyDatasetView extends UITester {
     browser().element(By.xpath("//h2[contains(text(),'Study')]/..//*[text()='Number of participants']/../td")).hasText("5,132");
     browser().element(By.xpath("//h2[contains(text(),'Study')]/..//*[text()='Countries']/../td")).hasText("Netherlands");
   }
-
-  private By firstHarmonizedVariable() {
-    return By.xpath("(//div[@id='table-variables_wrapper']//tbody//td)[1]");
-  }
-
-  private By firstLinkedStudy() {
-    return By.xpath("(//div[@id='studies-table']//tbody//td)[1]");
-  }
 }
