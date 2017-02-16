@@ -4,10 +4,12 @@ import com.vtence.mario.BrowserDriver;
 import com.vtence.mario.UnsynchronizedProber;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+@Ignore
 public class MarioDemoApplicationTests {
 
   private BrowserDriver browser;

@@ -15,7 +15,7 @@ public class NetworkView extends UITester {
     browser().element(By.xpath("(//h4)[1]")).hasText("IALSA - Integrative Analysis of Longitudinal Studies of Aging");
 
     browser().element(By.xpath("(//h4)[1]/a")).click();
-    browser().element(By.xpath("//*[text() = 'IALSA website']")).hasAttribute("href", "http://www.ialsa.org/");
+    browser().element(byElementWithText("IALSA website")).hasAttribute("href", "http://www.ialsa.org/");
   }
 
   @Test
