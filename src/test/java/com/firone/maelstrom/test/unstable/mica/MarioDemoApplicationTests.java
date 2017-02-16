@@ -1,4 +1,4 @@
-package com.firone;
+package com.firone.maelstrom.test.unstable.mica;
 
 import com.vtence.mario.BrowserDriver;
 import com.vtence.mario.UnsynchronizedProber;
