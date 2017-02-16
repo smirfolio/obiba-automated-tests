@@ -13,10 +13,10 @@ public class StudyDatasetView extends UITester {
 
     browser().element(byElementWithText("Datasets")).hoverWithMouse();
     browser().element(byElementWithText("Study Datasets")).click();
-    browser().element(By.xpath("(//h4)[1]")).hasText("LASA 3");
+    browser().element(By.xpath("(//h4)[1]")).hasText("CLS-Wave1");
 
     browser().element(By.xpath("(//h4)[1]/a")).click();
-    browser().element(By.xpath("//*[text()='Acronym']/../td")).hasText("LASA 3");
+    browser().element(By.xpath("//*[text()='Acronym']/../td")).hasText("CLS-Wave1");
   }
 
   @Test
