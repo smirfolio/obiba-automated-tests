@@ -14,8 +14,7 @@ public abstract class By extends org.openqa.selenium.By {
     String xpathSyntax = "";
 
     for (String element : simplifiedSyntax) {
-      String regex = "\\[(\\d+)\\]";
-      if (element.matches(regex))
+      if (element.matches("\\[(\\d+)\\]"))
         xpathSyntax = "(" + xpathSyntax + ")" + element;
       else
         xpathSyntax += "//*[@test-ref='" + element + "']";

@@ -1,4 +1,4 @@
-package com.firone.maelstrom.test.drupal;
+package com.firone.maelstrom.test.drupal.network;
 
 import com.firone.maelstrom.test.utils.UITester;
 import org.junit.Test;
