@@ -1,8 +1,8 @@
 package com.firone.maelstrom.test.drupal;
 
+import com.firone.maelstrom.test.utils.By;
 import com.firone.maelstrom.test.utils.UITester;
 import org.junit.Test;
-import org.openqa.selenium.By;
 
 public class StudyCounts extends UITester {
 
@@ -11,16 +11,16 @@ public class StudyCounts extends UITester {
 
     browser().navigate().to("http://localhost/drupal/mica/studies?page=1");
 
-    browser().element(By.xpath("//*[@id='refresh-list']/div[2]//a[@class='btn-default btn-xxs'][1]")).hasText("3 Networks");
-    browser().element(By.xpath("//*[@id='refresh-list']/div[2]//a[@class='btn-default btn-xxs'][1]")).click();
-    browser().element(By.xpath("//div[@item='child']//span[@title='NuAge']")).hasText("NuAge");
+    browser().element(By.ref("study", "[2]", "networkCount")).hasText("3 Networks");
+    browser().element(By.ref("study", "[2]", "networkCount")).click();
+    browser().element(By.ref("search-criterion")).hasText("NuAge");
 
-    browser().element(By.xpath("//li[@role='presentation']//*[contains(text(),'Variables')]//small")).hasText("14,480");
-    browser().element(By.xpath("//li[@role='presentation']//*[contains(text(),'Datasets')]//small")).hasText("29");
-    browser().element(By.xpath("//li[@role='presentation']//*[contains(text(),'Studies')]//small")).hasText("9");
-    browser().element(By.xpath("//li[@role='presentation']//*[contains(text(),'Networks')]//small")).hasText("3");
+    browser().element(By.ref("search-counts", "variables")).hasText("14,480");
+    browser().element(By.ref("search-counts", "datasets")).hasText("29");
+    browser().element(By.ref("search-counts", "studies")).hasText("9");
+    browser().element(By.ref("search-counts", "networks")).hasText("3");
 
-    browser().element(By.xpath("(//*[@class='tab-content']//td)[1]")).hasText("IALSA");
+    browser().element(By.ref("search-results", "acronym", "[1]")).hasText("IALSA");
   }
 
   @Test
