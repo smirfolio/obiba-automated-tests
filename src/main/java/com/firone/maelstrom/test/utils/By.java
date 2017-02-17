@@ -7,10 +7,14 @@ public abstract class By extends org.openqa.selenium.By {
       throw new IllegalArgumentException(
               "Cannot find elements without reference");
 
-    return new ByXPath(mapSyntax(references));
+    return new ByXPath(mapRefToXpath(references));
   }
 
-  static String mapSyntax(String... simplifiedSyntax) {
+  public static org.openqa.selenium.By text(String uiText) {
+    return org.openqa.selenium.By.xpath(xpathFindingDisplayedString(uiText));
+  }
+
+  static String mapRefToXpath(String... simplifiedSyntax) {
     String xpathSyntax = "";
 
     for (String element : simplifiedSyntax) {
@@ -20,5 +24,9 @@ public abstract class By extends org.openqa.selenium.By {
         xpathSyntax += "//*[@test-ref='" + element + "']";
     }
     return xpathSyntax;
+  }
+
+  static String xpathFindingDisplayedString(String uiText) {
+    return String.format("//*[text()='%s']", uiText.replaceAll("'", "\\\\\\'"));
   }
 }

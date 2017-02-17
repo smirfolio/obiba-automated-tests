@@ -1,8 +1,8 @@
 package com.firone.maelstrom.test.drupal.study;
 
+import com.firone.maelstrom.test.utils.By;
 import com.firone.maelstrom.test.utils.UITester;
 import org.junit.Test;
-import org.openqa.selenium.By;
 
 public class StudyView extends UITester {
 
@@ -11,11 +11,11 @@ public class StudyView extends UITester {
 
     browser().navigate().to("http://localhost/drupal");
 
-    browser().element(byElementWithText("Studies")).click();
+    browser().element(By.text("Studies")).click();
     browser().element(By.xpath("(//h4)[1]")).hasText("Atlantic PATH - Atlantic Partnership for Tomorrow's Health (The)");
 
     browser().element(By.xpath("(//h4)[1]/a")).click();
-    browser().element(byElementWithText("Atlantic PATH Website")).hasAttribute("href", "http://atlanticpath.ca/");
+    browser().element(By.text("Atlantic PATH Website")).hasAttribute("href", "http://atlanticpath.ca/");
   }
 
   @Test
@@ -23,7 +23,7 @@ public class StudyView extends UITester {
 
     browser().navigate().to("http://localhost/drupal/mica/study/atlantic-path");
 
-    browser().element(byElementWithText("Atlantic PATH Website")).hasAttribute("href", "http://atlanticpath.ca/");
+    browser().element(By.text("Atlantic PATH Website")).hasAttribute("href", "http://atlanticpath.ca/");
     browser().element(By.xpath("//*[text() = 'Contact']/..//li[1]")).hasText("Dr. Louise Parker (Dalhousie University )");
     browser().element(By.xpath("//*[text() = 'Investigator']/..//li[1]")).hasText("Dr. David W Hoskin (Dalhousie University )");
 
@@ -40,11 +40,11 @@ public class StudyView extends UITester {
     browser().element(firstLinkedDataset()).hasText("CPTP Health and Risk Factor Questionnaire DataSchema");
   }
 
-  private By firstLinkedDataset() {
+  private org.openqa.selenium.By firstLinkedDataset() {
     return By.xpath("(//div[@id='datasetsDisplay']//td)[1]");
   }
 
-  private By firstLinkedNetwork() {
+  private org.openqa.selenium.By firstLinkedNetwork() {
     return By.xpath("(//section[@id='networks']//tr)[2]//a");
   }
 }

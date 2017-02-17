@@ -4,7 +4,6 @@ import com.vtence.mario.BrowserDriver;
 import com.vtence.mario.UnsynchronizedProber;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class UITester {
@@ -23,9 +22,5 @@ public class UITester {
 
   protected BrowserDriver browser() {
     return browser;
-  }
-
-  protected By byElementWithText(String uiText) {
-    return By.xpath(String.format("//*[text() = '%s']", uiText.replaceAll("'", "\\'")));
   }
 }

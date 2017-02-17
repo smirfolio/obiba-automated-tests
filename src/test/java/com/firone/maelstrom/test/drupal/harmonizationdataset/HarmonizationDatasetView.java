@@ -1,8 +1,8 @@
 package com.firone.maelstrom.test.drupal.harmonizationdataset;
 
+import com.firone.maelstrom.test.utils.By;
 import com.firone.maelstrom.test.utils.UITester;
 import org.junit.Test;
-import org.openqa.selenium.By;
 
 public class HarmonizationDatasetView extends UITester {
 
@@ -11,8 +11,8 @@ public class HarmonizationDatasetView extends UITester {
 
     browser().navigate().to("http://localhost/drupal");
 
-    browser().element(byElementWithText("Datasets")).hoverWithMouse();
-    browser().element(byElementWithText("Harmonization Datasets")).click();
+    browser().element(By.text("Datasets")).hoverWithMouse();
+    browser().element(By.text("Harmonization Datasets")).click();
     browser().element(By.xpath("(//h4)[1]")).hasText("CPTPCoreQx - CPTP Health and Risk Factor Questionnaire DataSchema");
 
     browser().element(By.xpath("(//h4)[1]/a")).click();
@@ -34,11 +34,11 @@ public class HarmonizationDatasetView extends UITester {
     browser().element(firstHarmonizedVariable()).hasText("A_HS_DENTAL_VISIT_LAST");
   }
 
-  private By firstHarmonizedVariable() {
+  private org.openqa.selenium.By firstHarmonizedVariable() {
     return By.xpath("(//div[@id='table-variables_wrapper']//tbody//td)[1]");
   }
 
-  private By firstLinkedStudy() {
+  private org.openqa.selenium.By firstLinkedStudy() {
     return By.xpath("(//div[@id='studies-table']//tbody//td)[1]");
   }
 }

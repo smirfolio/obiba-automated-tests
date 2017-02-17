@@ -1,8 +1,8 @@
 package com.firone.maelstrom.test.drupal.studydataset;
 
+import com.firone.maelstrom.test.utils.By;
 import com.firone.maelstrom.test.utils.UITester;
 import org.junit.Test;
-import org.openqa.selenium.By;
 
 public class StudyDatasetView extends UITester {
 
@@ -11,8 +11,8 @@ public class StudyDatasetView extends UITester {
 
     browser().navigate().to("http://localhost/drupal");
 
-    browser().element(byElementWithText("Datasets")).hoverWithMouse();
-    browser().element(byElementWithText("Study Datasets")).click();
+    browser().element(By.text("Datasets")).hoverWithMouse();
+    browser().element(By.text("Study Datasets")).click();
     browser().element(By.xpath("(//h4)[1]")).hasText("CLS-Wave1");
 
     browser().element(By.xpath("(//h4)[1]/a")).click();
