@@ -28,16 +28,16 @@ public class StudyCounts extends UITester {
 
     browser().navigate().to("http://localhost/drupal/mica/studies?page=1");
 
-    browser().element(By.xpath("//*[@id='refresh-list']/div[2]//a[@class='btn-default btn-xxs'][2]")).hasText("4 Datasets");
-    browser().element(By.xpath("//*[@id='refresh-list']/div[2]//a[@class='btn-default btn-xxs'][2]")).click();
-    browser().element(By.xpath("//div[@item='child']//span[@title='NuAge']")).hasText("NuAge");
+    browser().element(By.ref("study", "[2]", "datasetCount")).hasText("4 Datasets");
+    browser().element(By.ref("study", "[2]", "datasetCount")).click();
+    browser().element(By.ref("search-criterion")).hasText("NuAge");
 
-    browser().element(By.xpath("//li[@role='presentation']//*[contains(text(),'Variables')]//small")).hasText("4,081");
-    browser().element(By.xpath("//li[@role='presentation']//*[contains(text(),'Datasets')]//small")).hasText("4");
-    browser().element(By.xpath("//li[@role='presentation']//*[contains(text(),'Studies')]//small")).hasText("1");
-    browser().element(By.xpath("//li[@role='presentation']//*[contains(text(),'Networks')]//small")).hasText("3");
+    browser().element(By.ref("search-counts", "variables")).hasText("4,081");
+    browser().element(By.ref("search-counts", "datasets")).hasText("4");
+    browser().element(By.ref("search-counts", "studies")).hasText("1");
+    browser().element(By.ref("search-counts", "networks")).hasText("3");
 
-    browser().element(By.xpath("(//localized[@value='summary.acronym']/span)[1]")).hasText("NuAge-T1");
+    browser().element(By.ref("search-results", "acronym", "[1]")).hasText("NuAge-T1");
   }
 
   @Test
@@ -45,16 +45,16 @@ public class StudyCounts extends UITester {
 
     browser().navigate().to("http://localhost/drupal/mica/studies?page=1");
 
-    browser().element(By.xpath("//*[@id='refresh-list']/div[2]//a[@class='btn-default btn-xxs'][3]")).hasText("4,081 Study Variables");
-    browser().element(By.xpath("//*[@id='refresh-list']/div[2]//a[@class='btn-default btn-xxs'][3]")).click();
-    browser().element(By.xpath("//div[@item='child']//span[@title='NuAge']")).hasText("NuAge");
-    browser().element(By.xpath("//div[@item='child']//span[@title='Study']")).hasText("Study");
+    browser().element(By.ref("study", "[2]", "studyVariableCount")).hasText("4,081 Study Variables");
+    browser().element(By.ref("study", "[2]", "studyVariableCount")).click();
+    browser().element(By.ref("search-criterion", "[1]")).hasText("NuAge");
+    browser().element(By.ref("search-criterion", "[2]")).hasText("Study");
 
-    browser().element(By.xpath("//li[@role='presentation']//*[contains(text(),'Variables')]//small")).hasText("4,081");
-    browser().element(By.xpath("//li[@role='presentation']//*[contains(text(),'Datasets')]//small")).hasText("4");
-    browser().element(By.xpath("//li[@role='presentation']//*[contains(text(),'Studies')]//small")).hasText("1");
-    browser().element(By.xpath("//li[@role='presentation']//*[contains(text(),'Networks')]//small")).hasText("3");
+    browser().element(By.ref("search-counts", "variables")).hasText("4,081");
+    browser().element(By.ref("search-counts", "datasets")).hasText("4");
+    browser().element(By.ref("search-counts", "studies")).hasText("1");
+    browser().element(By.ref("search-counts", "networks")).hasText("3");
 
-    browser().element(By.xpath("(//*[@display='search.display']//td)[1]")).hasText("A1BT1");
+    browser().element(By.ref("search-results", "name", "[1]")).hasText("A1BT1");
   }
 }
