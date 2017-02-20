@@ -9,7 +9,6 @@ public class StudyDatasetCounts extends UITester {
   @Test
   public void check_that_networks_count_in_list_is_valid() {
 
-    //TODO fix bug then remove orderBy of this url
     browser().navigate().to("http://localhost/drupal/mica/datasets/study-datasets?search-sort=name&search-sort-order=asc");
 
     browser().element(By.ref("dataset", "[5]", "networkCount")).hasText("4 Networks");
@@ -27,7 +26,6 @@ public class StudyDatasetCounts extends UITester {
   @Test
   public void check_that_study_count_in_list_is_valid() {
 
-    //TODO fix bug then remove orderBy of this url
     browser().navigate().to("http://localhost/drupal/mica/datasets/study-datasets?search-sort=name&search-sort-order=asc");
 
     browser().element(By.ref("dataset", "[5]", "studyCount")).hasText("1 Study");
@@ -45,7 +43,6 @@ public class StudyDatasetCounts extends UITester {
   @Test
   public void check_that_variables_count_in_list_is_valid() {
 
-    //TODO fix bug then remove orderBy of this url
     browser().navigate().to("http://localhost/drupal/mica/datasets/study-datasets?search-sort=name&search-sort-order=asc");
 
     browser().element(By.ref("dataset", "[5]", "variableCount")).hasText("1,045 Variables");
