@@ -4,7 +4,7 @@ import com.firone.maelstrom.test.utils.By;
 import com.firone.maelstrom.test.utils.UITester;
 import org.junit.Test;
 
-public class NetworkSearchNavigation extends UITester {
+public class NetworkListSearchButton extends UITester {
 
   @Test
   public void search_button_on_network_list_must_return_search_result_for_all_networks() {
