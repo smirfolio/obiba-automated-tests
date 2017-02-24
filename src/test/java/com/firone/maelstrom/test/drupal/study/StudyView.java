@@ -50,6 +50,7 @@ public class StudyView extends UITester {
     browser().navigate().to("http://localhost/drupal/mica/study/cag");
 
     browser().element(By.text("Search Variables")).click();
+    browser().pause(300);
 
     browser().element(By.ref("search-criterion")).hasText("CaG");
     browser().element(By.ref("search-results", "name", "[1]")).hasText("A_ADM_STUDY_ID");
@@ -106,6 +107,7 @@ public class StudyView extends UITester {
 
     browser().element(currentModalThenRefs("file-search-input")).type("interview");
     browser().element(currentModalThenRefs("file-search-input")).enterTextUsingKeyboard(Keys.ENTER);
+    browser().pause(300);
 
     browser().element(currentModalThenRefs("file-search-result-list", "file-name", "[2]")).hasText("Wave 1 informant interview.pdf");
     browser().element(currentModalThenRefs("file-search-result-list", "file-type", "[2]")).hasText("FILE");
