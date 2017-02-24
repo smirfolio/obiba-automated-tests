@@ -9,7 +9,7 @@ public class StudyDatasetCounts extends UITester {
   @Test
   public void check_that_networks_count_in_list_is_valid() {
 
-    browser().navigate().to("http://localhost/drupal/mica/datasets/study-datasets?search-sort=name&search-sort-order=asc");
+    browser().navigate().to("http://localhost/drupal/mica/datasets/study-datasets");
 
     browser().element(By.ref("dataset", "[5]", "networkCount")).hasText("4 Networks");
     browser().element(By.ref("dataset", "[5]", "networkCount")).click();
@@ -26,7 +26,7 @@ public class StudyDatasetCounts extends UITester {
   @Test
   public void check_that_study_count_in_list_is_valid() {
 
-    browser().navigate().to("http://localhost/drupal/mica/datasets/study-datasets?search-sort=name&search-sort-order=asc");
+    browser().navigate().to("http://localhost/drupal/mica/datasets/study-datasets");
 
     browser().element(By.ref("dataset", "[5]", "studyCount")).hasText("1 Study");
     browser().element(By.ref("dataset", "[5]", "studyCount")).click();
