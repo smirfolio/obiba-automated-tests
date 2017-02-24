@@ -5,8 +5,9 @@ import com.firone.maelstrom.test.utils.By;
 import com.firone.maelstrom.test.utils.UITester;
 import com.vtence.mario.WebElementDriver;
 import org.junit.Test;
+import org.openqa.selenium.Keys;
 
-public class StudyListSorting extends UITester {
+public class StudyList extends UITester {
 
   @Test
   public void can_sort_studies_by_acronym() {
@@ -54,6 +55,23 @@ public class StudyListSorting extends UITester {
 
     new StudyListPagination().pagerElement().element(By.text("next")).click();
     studyNameNumber(1).hasText("CaG - CARTaGENE");
+  }
+
+  @Test
+  public void can_filter_list() {
+
+    browser().navigate().to("http://localhost/drupal//mica/studies");
+
+    browser().element(By.id("edit-search-query")).enterTextUsingKeyboard("cls");
+    browser().element(By.id("edit-search-query")).enterTextUsingKeyboard(Keys.ENTER);
+
+    browser().element(By.ref("study", "[1]")).element(By.tagName("h4")).hasText("CLSA - Canadian Longitudinal Study on Aging");
+    browser().element(By.ref("study", "[2]")).element(By.tagName("h4")).hasText("CLS - Canberra Longitudinal Study");
+
+    browser().element(By.id("edit-search-sort-order")).element(By.xpath("//*[@value='desc']")).click();
+
+    browser().element(By.ref("study", "[1]")).element(By.tagName("h4")).hasText("CLS - Canberra Longitudinal Study");
+    browser().element(By.ref("study", "[2]")).element(By.tagName("h4")).hasText("CLSA - Canadian Longitudinal Study on Aging");
   }
 
   private WebElementDriver studyNameNumber(int studyNumber) {

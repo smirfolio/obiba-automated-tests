@@ -4,8 +4,9 @@ import com.firone.maelstrom.test.utils.By;
 import com.firone.maelstrom.test.utils.UITester;
 import com.vtence.mario.WebElementDriver;
 import org.junit.Test;
+import org.openqa.selenium.Keys;
 
-public class NetworkListSorting extends UITester {
+public class NetworkList extends UITester {
 
   @Test
   public void can_sort_networks_by_acronym() {
@@ -29,6 +30,23 @@ public class NetworkListSorting extends UITester {
 
     browser().element(By.id("edit-search-sort-order")).element(By.xpath("//*[@value='desc']")).click();
     networkNameNumber(2).hasText("QSC - Quebec Study Catalogue");
+  }
+
+  @Test
+  public void can_filter_list() {
+
+    browser().navigate().to("http://localhost/drupal//mica/networks?search-sort=acronym");
+
+    browser().element(By.id("edit-search-query")).enterTextUsingKeyboard("cls");
+    browser().element(By.id("edit-search-query")).enterTextUsingKeyboard(Keys.ENTER);
+
+    browser().element(By.ref("network", "[1]")).element(By.tagName("h4")).hasText("CCLSA - Constances/CLSA");
+    browser().element(By.ref("network", "[2]")).element(By.tagName("h4")).hasText("RIFA - Recherche Internationale sur la Fragilité des Aînés");
+
+    browser().element(By.id("edit-search-sort-order")).element(By.xpath("//*[@value='desc']")).click();
+
+    browser().element(By.ref("network", "[1]")).element(By.tagName("h4")).hasText("RIFA - Recherche Internationale sur la Fragilité des Aînés");
+    browser().element(By.ref("network", "[2]")).element(By.tagName("h4")).hasText("CCLSA - Constances/CLSA");
   }
 
   private WebElementDriver networkNameNumber(int networkNumber) {
