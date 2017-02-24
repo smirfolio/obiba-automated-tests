@@ -23,4 +23,9 @@ public class By_refTest {
   public void can_search_with_many_counts() {
     assertThat(By.mapRefToXpath("search", "[10]", "acronym", "[2]"), is("((//*[@test-ref='search'])[10]//*[@test-ref='acronym'])[2]"));
   }
+
+  @Test
+  public void can_search_with_prefix() {
+    assertThat(By.mapRefToXpathWithPrefix("//prefix", "search", "[10]", "acronym"), is("(//prefix//*[@test-ref='search'])[10]//*[@test-ref='acronym']"));
+  }
 }

@@ -25,14 +25,14 @@ public class UITester {
   }
 
   protected org.openqa.selenium.By currentModalThenRefs(String... references) {
-    return By.xpath(currentModalPath() + By.mapRefToXpath(references));
+    return By.xpath(By.mapRefToXpathWithPrefix(currentModalPath(), references));
   }
 
   protected org.openqa.selenium.By currentModalBy() {
     return By.xpath(currentModalPath());
   }
 
-  protected String currentModalPath() {
+  private String currentModalPath() {
     return "//*[@class='modal fade in']";
   }
 }

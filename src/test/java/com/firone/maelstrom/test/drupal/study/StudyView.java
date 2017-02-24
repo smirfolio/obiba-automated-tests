@@ -5,6 +5,7 @@ import com.firone.maelstrom.test.utils.UITester;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.startsWith;
 
 public class StudyView extends UITester {
 
@@ -65,15 +66,35 @@ public class StudyView extends UITester {
     validateThirdMembership();
   }
 
+  @Test
+  public void can_view_dce() {
+
+    browser().navigate().to("http://localhost/drupal/mica/study/cag");
+
+    browser().element(firstDce()).hasText("CaG - Baseline Recruitment");
+    browser().element(firstDce()).click();
+
+    browser().element(currentModalThenRefs("modal-dce-description")).hasText(startsWith("During the phase"));
+    browser().element(currentModalThenRefs("modal-dce-startYear")).hasText("2007 (January)");
+    browser().element(currentModalThenRefs("modal-dce-endYear")).hasText("2010 (October)");
+    browser().element(currentModalThenRefs("modal-dce-dataSource", "[2]")).hasText("Physical measures");
+    browser().element(currentModalThenRefs("modal-dce-biosample", "[1]")).hasText("Blood");
+  }
+
+  private org.openqa.selenium.By firstDce() {
+    return By.xpath("(//*[@id='variables_overview']//tbody//td)[1]");
+  }
+
   private void validateFirstMembership() {
     browser().element(By.ref("membership", "[1]")).click();
     browser().element(currentModalBy()).element(By.className("modal-title")).hasText("Prof. Philip Awadalla");
     browser().element(currentModalThenRefs("modal-body", "email")).hasText("philip.awadalla@umontreal.ca");
     browser().element(currentModalThenRefs("modal-body", "institutionIdentifier")).hasText("CHU Sainte-Justine Research Centre");
-    browser().element(currentModalThenRefs("modal-body", "institutionAddress")).hasText(is("3175 Chemin de la Cote-Sainte-Catherine\n" +
-            "Montreal\n" +
-            "H3T 1C5\n" +
-            "Quebec, Canada"));
+    browser().element(currentModalThenRefs("modal-body", "institutionAddress")).hasText(is(
+            "3175 Chemin de la Cote-Sainte-Catherine\n" +
+                    "Montreal\n" +
+                    "H3T 1C5\n" +
+                    "Quebec, Canada"));
   }
 
   private void validateThirdMembership() {

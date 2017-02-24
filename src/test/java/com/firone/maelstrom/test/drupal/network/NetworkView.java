@@ -62,7 +62,11 @@ public class NetworkView extends UITester {
     browser().element(currentModalBy()).element(By.className("modal-title")).hasText("Dr. Isabel Fortier");
     browser().element(currentModalThenRefs("modal-body", "email")).hasText("isabel.fortier@mail.mcgill.ca");
     browser().element(currentModalThenRefs("modal-body", "institutionIdentifier")).hasText("Reseach Institute of the McGill University Health Centre");
-    browser().element(currentModalThenRefs("modal-body", "institutionAddress")).hasText(is("2155 Guy Street, 4th Floor\nMontreal\nH3H 2R9\nQuebec, Canada"));
+    browser().element(currentModalThenRefs("modal-body", "institutionAddress")).hasText(is(
+            "2155 Guy Street, 4th Floor\n" +
+                    "Montreal\n" +
+                    "H3H 2R9\n" +
+                    "Quebec, Canada"));
   }
 
   private void validateSecondMembership() {
