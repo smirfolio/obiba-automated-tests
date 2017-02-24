@@ -30,4 +30,15 @@ public class NetworkView extends UITester {
     browser().element(By.xpath("//*[text() = '1,000 to 4,999']/..//a")).click();
     browser().element(By.xpath("(//div[@display='search.display']//td)[1]")).hasText("CLS");
   }
+
+  @Test
+  public void validate_searchVariables_button_navitates_to_correct_page() {
+
+    browser().navigate().to("http://localhost/drupal/mica/network/qsc");
+
+    browser().element(By.text("Search Variables")).click();
+
+    browser().element(By.ref("search-criterion")).hasText("QSC");
+    browser().element(By.ref("search-results", "name", "[1]")).hasText("ADL_ABLAP_TRM");
+  }
 }
