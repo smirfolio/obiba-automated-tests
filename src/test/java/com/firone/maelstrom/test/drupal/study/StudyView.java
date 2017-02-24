@@ -4,6 +4,8 @@ import com.firone.maelstrom.test.utils.By;
 import com.firone.maelstrom.test.utils.UITester;
 import org.junit.Test;
 
+import static org.hamcrest.Matchers.is;
+
 public class StudyView extends UITester {
 
   @Test
@@ -38,6 +40,46 @@ public class StudyView extends UITester {
 
     browser().element(firstLinkedNetwork()).hasText("CPTP");
     browser().element(firstLinkedDataset()).hasText("CPTP Health and Risk Factor Questionnaire DataSchema");
+  }
+
+  @Test
+  public void validate_searchVariables_button_navitates_to_correct_page() {
+
+    browser().navigate().to("http://localhost/drupal/mica/study/cag");
+
+    browser().element(By.text("Search Variables")).click();
+
+    browser().element(By.ref("search-criterion")).hasText("CaG");
+    browser().element(By.ref("search-results", "name", "[1]")).hasText("A_ADM_STUDY_ID");
+  }
+
+  @Test
+  public void can_view_contact_details() {
+
+    browser().navigate().to("http://localhost/drupal/mica/study/cag");
+
+    validateFirstMembership();
+
+    browser().element(currentModalBy()).element(By.className("close")).click();
+
+    validateThirdMembership();
+  }
+
+  private void validateFirstMembership() {
+    browser().element(By.ref("membership", "[1]")).click();
+    browser().element(currentModalBy()).element(By.className("modal-title")).hasText("Prof. Philip Awadalla");
+    browser().element(currentModalThenRefs("modal-body", "email")).hasText("philip.awadalla@umontreal.ca");
+    browser().element(currentModalThenRefs("modal-body", "institutionIdentifier")).hasText("CHU Sainte-Justine Research Centre");
+    browser().element(currentModalThenRefs("modal-body", "institutionAddress")).hasText(is("3175 Chemin de la Cote-Sainte-Catherine\n" +
+            "Montreal\n" +
+            "H3T 1C5\n" +
+            "Quebec, Canada"));
+  }
+
+  private void validateThirdMembership() {
+    browser().element(By.ref("membership", "[3]")).click();
+    browser().element(currentModalBy()).element(By.className("modal-title")).hasText("Guy Rouleau");
+    browser().element(currentModalThenRefs("modal-body", "institutionIdentifier")).hasText("Université de Montréal");
   }
 
   private org.openqa.selenium.By firstLinkedDataset() {

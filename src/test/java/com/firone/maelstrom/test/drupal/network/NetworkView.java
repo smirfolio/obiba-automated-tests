@@ -49,28 +49,28 @@ public class NetworkView extends UITester {
 
     browser().navigate().to("http://localhost/drupal/mica/network/qsc");
 
-    browser().element(By.ref("membership", "[2]")).click();
-    browser().element(currentModal()).element(By.className("modal-title")).hasText("Dr. Vincent Ferretti");
-    browser().element(currentModalThenRefs("modal-body", "email")).hasText("vincent.ferretti@oicr.on.ca");
-    browser().element(currentModalThenRefs("modal-body", "phone")).hasText("+1 (416) 673 8509");
-    browser().element(currentModalThenRefs("modal-body", "institutionIdentifier")).hasText("Ontario Institute for Cancer Research");
-    browser().element(currentModalThenRefs("modal-body", "institutionAddress")).hasText("Ontario, Canada");
+    validateSecondMembership();
 
-    browser().element(currentModal()).element(By.className("close")).click();
+    browser().element(currentModalBy()).element(By.className("close")).click();
     browser().pause(500);
 
+    validateFirstMembership();
+  }
+
+  private void validateFirstMembership() {
     browser().element(By.ref("membership", "[1]")).click();
-    browser().element(currentModal()).element(By.className("modal-title")).hasText("Dr. Isabel Fortier");
+    browser().element(currentModalBy()).element(By.className("modal-title")).hasText("Dr. Isabel Fortier");
     browser().element(currentModalThenRefs("modal-body", "email")).hasText("isabel.fortier@mail.mcgill.ca");
     browser().element(currentModalThenRefs("modal-body", "institutionIdentifier")).hasText("Reseach Institute of the McGill University Health Centre");
     browser().element(currentModalThenRefs("modal-body", "institutionAddress")).hasText(is("2155 Guy Street, 4th Floor\nMontreal\nH3H 2R9\nQuebec, Canada"));
   }
 
-  private org.openqa.selenium.By currentModalThenRefs(String... references) {
-    return By.xpath("//*[@class='modal fade in']" + By.mapRefToXpath(references));
-  }
-
-  private org.openqa.selenium.By currentModal() {
-    return By.xpath("//*[@class='modal fade in']");
+  private void validateSecondMembership() {
+    browser().element(By.ref("membership", "[2]")).click();
+    browser().element(currentModalBy()).element(By.className("modal-title")).hasText("Dr. Vincent Ferretti");
+    browser().element(currentModalThenRefs("modal-body", "email")).hasText("vincent.ferretti@oicr.on.ca");
+    browser().element(currentModalThenRefs("modal-body", "phone")).hasText("+1 (416) 673 8509");
+    browser().element(currentModalThenRefs("modal-body", "institutionIdentifier")).hasText("Ontario Institute for Cancer Research");
+    browser().element(currentModalThenRefs("modal-body", "institutionAddress")).hasText("Ontario, Canada");
   }
 }

@@ -23,4 +23,16 @@ public class UITester {
   protected BrowserDriver browser() {
     return browser;
   }
+
+  protected org.openqa.selenium.By currentModalThenRefs(String... references) {
+    return By.xpath(currentModalPath() + By.mapRefToXpath(references));
+  }
+
+  protected org.openqa.selenium.By currentModalBy() {
+    return By.xpath(currentModalPath());
+  }
+
+  protected String currentModalPath() {
+    return "//*[@class='modal fade in']";
+  }
 }
