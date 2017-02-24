@@ -14,7 +14,7 @@ public abstract class By extends org.openqa.selenium.By {
     return org.openqa.selenium.By.xpath(xpathFindingDisplayedString(uiText));
   }
 
-  static String mapRefToXpath(String... simplifiedSyntax) {
+  public static String mapRefToXpath(String... simplifiedSyntax) {
     String xpathSyntax = "";
 
     for (String element : simplifiedSyntax) {

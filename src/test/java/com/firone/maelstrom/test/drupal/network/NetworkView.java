@@ -4,6 +4,8 @@ import com.firone.maelstrom.test.utils.By;
 import com.firone.maelstrom.test.utils.UITester;
 import org.junit.Test;
 
+import static org.hamcrest.Matchers.is;
+
 public class NetworkView extends UITester {
 
   @Test
@@ -24,7 +26,7 @@ public class NetworkView extends UITester {
     browser().navigate().to("http://localhost/drupal/mica/network/ialsa");
 
     browser().element(By.text("IALSA website")).hasAttribute("href", "http://www.ialsa.org/");
-    browser().element(By.xpath("//*[text() = 'Investigator']/..//li[1]")).hasText("Scott M. Hofer, PhD. (Oregon Health & Science University )");
+    browser().element(By.ref("membership", "[1]")).hasText("Scott M. Hofer, PhD. (Oregon Health & Science University )");
 
     browser().element(By.text("Participants")).click();
     browser().element(By.xpath("//*[text() = '1,000 to 4,999']/..//a")).click();
@@ -40,5 +42,35 @@ public class NetworkView extends UITester {
 
     browser().element(By.ref("search-criterion")).hasText("QSC");
     browser().element(By.ref("search-results", "name", "[1]")).hasText("ADL_ABLAP_TRM");
+  }
+
+  @Test
+  public void can_view_contact_details() {
+
+    browser().navigate().to("http://localhost/drupal/mica/network/qsc");
+
+    browser().element(By.ref("membership", "[2]")).click();
+    browser().element(currentModal()).element(By.className("modal-title")).hasText("Dr. Vincent Ferretti");
+    browser().element(currentModalThenRefs("modal-body", "email")).hasText("vincent.ferretti@oicr.on.ca");
+    browser().element(currentModalThenRefs("modal-body", "phone")).hasText("+1 (416) 673 8509");
+    browser().element(currentModalThenRefs("modal-body", "institutionIdentifier")).hasText("Ontario Institute for Cancer Research");
+    browser().element(currentModalThenRefs("modal-body", "institutionAddress")).hasText("Ontario, Canada");
+
+    browser().element(currentModal()).element(By.className("close")).click();
+    browser().pause(500);
+
+    browser().element(By.ref("membership", "[1]")).click();
+    browser().element(currentModal()).element(By.className("modal-title")).hasText("Dr. Isabel Fortier");
+    browser().element(currentModalThenRefs("modal-body", "email")).hasText("isabel.fortier@mail.mcgill.ca");
+    browser().element(currentModalThenRefs("modal-body", "institutionIdentifier")).hasText("Reseach Institute of the McGill University Health Centre");
+    browser().element(currentModalThenRefs("modal-body", "institutionAddress")).hasText(is("2155 Guy Street, 4th Floor\nMontreal\nH3H 2R9\nQuebec, Canada"));
+  }
+
+  private org.openqa.selenium.By currentModalThenRefs(String... references) {
+    return By.xpath("//*[@class='modal fade in']" + By.mapRefToXpath(references));
+  }
+
+  private org.openqa.selenium.By currentModal() {
+    return By.xpath("//*[@class='modal fade in']");
   }
 }
