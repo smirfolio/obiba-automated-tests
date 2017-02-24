@@ -12,7 +12,7 @@ public class UITester {
 
   @BeforeClass
   public static void setUp() throws Exception {
-    browser = new BrowserDriver(new UnsynchronizedProber(2000, 50), new FirefoxDriver());
+    browser = new BrowserDriver(new UnsynchronizedProber(3000, 50), new FirefoxDriver());
   }
 
   @AfterClass

@@ -30,10 +30,12 @@ public class HarmonizationDatasetsPagination extends UITester {
   }
 
   private void assertThatWeAreOnFirstPage() {
+    browser().pause(500);
     browser().element(By.xpath("(//*[@id='table-variables']//td)[1]")).hasText("A_ADM_STUDY_ID");
   }
 
   private void assertThatWeAreOnSecondPage() {
+    browser().pause(500);
     browser().element(By.xpath("(//*[@id='table-variables']//td)[1]")).hasText("A_HS_DENTAL_VISIT_LAST");
   }
 }
