@@ -30,11 +30,12 @@ public class NetworkCounts extends UITester {
 
     browser().element(By.ref("network", "[2]", "studyWithVariablesCount")).hasText("3 Studies with Variables");
     browser().element(By.ref("network", "[2]", "studyWithVariablesCount")).click();
-    browser().element(By.ref("search-criterion")).hasText("QSC");
+    browser().element(By.ref("search-criterion", "[1]")).hasText("QSC");
+    browser().element(By.ref("search-criterion", "[2]")).hasText("Study");
 
-    browser().element(By.ref("search-counts", "variables")).hasText("6,781");
-    browser().element(By.ref("search-counts", "datasets")).hasText("7");
-    browser().element(By.ref("search-counts", "studies")).hasText("4");
+    browser().element(By.ref("search-counts", "variables")).hasText("6,009");
+    browser().element(By.ref("search-counts", "datasets")).hasText("6");
+    browser().element(By.ref("search-counts", "studies")).hasText("3");
     browser().element(By.ref("search-counts", "networks")).hasText("1");
 
     browser().element(By.ref("search-results", "acronym", "[1]")).hasText("CLSA");

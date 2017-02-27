@@ -3,10 +3,8 @@ package com.firone.maelstrom.test.drupal.study;
 import com.firone.maelstrom.test.utils.By;
 import com.firone.maelstrom.test.utils.UITester;
 import org.junit.Test;
-import org.openqa.selenium.Keys;
 
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.startsWith;
 
 public class StudyView extends UITester {
 
@@ -45,7 +43,7 @@ public class StudyView extends UITester {
   }
 
   @Test
-  public void validate_searchVariables_button_navitates_to_correct_page() {
+  public void validate_searchVariables_button_navigates_to_correct_page() {
 
     browser().navigate().to("http://localhost/drupal/mica/study/cag");
 
@@ -66,72 +64,6 @@ public class StudyView extends UITester {
     browser().element(currentModalBy()).element(By.className("close")).click();
 
     validateThirdMembership();
-  }
-
-  @Test
-  public void can_view_dce() {
-
-    browser().navigate().to("http://localhost/drupal/mica/study/cag");
-
-    browser().element(firstDce()).hasText("CaG - Baseline Recruitment");
-    browser().element(firstDce()).click();
-
-    browser().element(currentModalThenRefs("modal-dce-description")).hasText(startsWith("During the phase"));
-    browser().element(currentModalThenRefs("modal-dce-startYear")).hasText("2007 (January)");
-    browser().element(currentModalThenRefs("modal-dce-endYear")).hasText("2010 (October)");
-    browser().element(currentModalThenRefs("modal-dce-dataSource", "[2]")).hasText("Physical measures");
-    browser().element(currentModalThenRefs("modal-dce-biosample", "[1]")).hasText("Blood");
-  }
-
-  @Test
-  public void can_view_dce_files() {
-
-    browser().navigate().to("http://localhost/drupal/mica/study/cls");
-
-    browser().element(firstDce()).hasText("CLS wave 1");
-    browser().element(firstDce()).click();
-
-    browser().element(currentModalThenRefs("file-search-result-list", "file-name", "[2]")).hasText("Wave 1 informant self-completion.pdf");
-    browser().element(currentModalThenRefs("file-search-result-list", "file-type", "[2]")).hasText("FILE");
-    browser().element(currentModalThenRefs("file-search-result-list", "file-size", "[2]")).hasText("152.26 KB");
-    browser().element(currentModalThenRefs("file-search-result-list", "file-lastModification", "[1]")).hasText("3 months ago");
-  }
-
-  @Test
-  public void can_view_dce_files__search_files() {
-
-    browser().navigate().to("http://localhost/drupal/mica/study/cls");
-
-    browser().element(firstDce()).hasText("CLS wave 1");
-    browser().element(firstDce()).click();
-
-    browser().element(currentModalThenRefs("file-search-input")).type("interview");
-    browser().element(currentModalThenRefs("file-search-input")).enterTextUsingKeyboard(Keys.ENTER);
-    browser().pause(300);
-
-    browser().element(currentModalThenRefs("file-search-result-list", "file-name", "[2]")).hasText("Wave 1 informant interview.pdf");
-    browser().element(currentModalThenRefs("file-search-result-list", "file-type", "[2]")).hasText("FILE");
-    browser().element(currentModalThenRefs("file-search-result-list", "file-size", "[2]")).hasText("1.11 MB");
-    browser().element(currentModalThenRefs("file-search-result-list", "file-lastModification", "[2]")).hasText("3 months ago");
-    browser().element(currentModalThenRefs("file-search-result-list", "file-parent", "[2]")).hasText("/");
-  }
-
-  @Test
-  public void can_view_dce_files__search_most_recently_modified_files() {
-
-    browser().navigate().to("http://localhost/drupal/mica/study/cls");
-
-    browser().element(firstDce()).hasText("CLS wave 1");
-    browser().element(firstDce()).click();
-
-    browser().element(currentModalThenRefs("file-search-result-list", "file-size", "[2]")).hasText("152.26 KB");
-    browser().element(By.xpath("//a[@title='Search 10 most recently modified files']")).click();
-    browser().pause(200);
-    browser().element(currentModalThenRefs("file-search-result-list", "file-size", "[2]")).hasText("118.31 KB");
-  }
-
-  private org.openqa.selenium.By firstDce() {
-    return By.xpath("(//*[@id='variables_overview']//tbody//td)[1]");
   }
 
   private void validateFirstMembership() {
