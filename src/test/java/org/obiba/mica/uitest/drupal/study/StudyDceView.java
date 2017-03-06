@@ -35,7 +35,7 @@ public class StudyDceView extends UITester {
     browser().element(firstDceNameWithSinglePop()).click();
 
     browser().element(currentModalThenRefs("file-search-result-list", "file-name", "[2]")).hasText("Wave 1 informant self-completion.pdf");
-    browser().element(currentModalThenRefs("file-search-result-list", "file-type", "[2]")).hasText("FILE");
+    browser().element(currentModalThenRefs("file-search-result-list", "file-type", "[2]")).hasText("questionnaire");
     browser().element(currentModalThenRefs("file-search-result-list", "file-size", "[2]")).hasText("152.26 KB");
     browser().element(currentModalThenRefs("file-search-result-list", "file-lastModification", "[1]")).hasText("3 months ago");
   }
@@ -53,7 +53,7 @@ public class StudyDceView extends UITester {
     browser().pause(500);
 
     browser().element(currentModalThenRefs("file-search-result-list", "file-name", "[2]")).hasText("Wave 1 informant interview.pdf");
-    browser().element(currentModalThenRefs("file-search-result-list", "file-type", "[2]")).hasText("FILE");
+    browser().element(currentModalThenRefs("file-search-result-list", "file-type", "[2]")).hasText("questionnaire");
     browser().element(currentModalThenRefs("file-search-result-list", "file-size", "[2]")).hasText("1.11 MB");
     browser().element(currentModalThenRefs("file-search-result-list", "file-lastModification", "[2]")).hasText("3 months ago");
     browser().element(currentModalThenRefs("file-search-result-list", "file-parent", "[2]")).hasText("/");
