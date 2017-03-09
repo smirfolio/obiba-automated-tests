@@ -1,8 +1,8 @@
 package org.obiba.mica.uitest.drupal.study;
 
+import org.junit.Test;
 import org.obiba.mica.uitest.utils.By;
 import org.obiba.mica.uitest.utils.UITester;
-import org.junit.Test;
 import org.openqa.selenium.Keys;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -114,16 +114,8 @@ public class StudyDceView extends UITester {
     return dceNumber(1, 1, false);
   }
 
-  private org.openqa.selenium.By firstDceNameWithMultiplePop() {
-    return dceNumber(1, 1, true);
-  }
-
   private String activePopulationContentXpath() {
     return "//*[@test-ref='population-tab-content']/*[contains(@class,'active')]";
-  }
-
-  private org.openqa.selenium.By dceNumberSinglePop(int dceLine, int dceColumn) {
-    return dceNumber(dceLine, dceColumn, false);
   }
 
   private org.openqa.selenium.By dceNumberMultiplePop(int dceLine, int dceColumn) {
@@ -135,7 +127,6 @@ public class StudyDceView extends UITester {
     String finalXpath = String.format("((%s//*[@id='variables_overview']//tbody//tr)[%s]//td)[%s]",
             multiplePopulations ? activePopulationContentXpath() : uniquePopulationContentXpath(),
             dceLine, dceColumn);
-    System.out.println(finalXpath);
     return By.xpath(finalXpath);
   }
 
