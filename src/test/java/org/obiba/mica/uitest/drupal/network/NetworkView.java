@@ -29,6 +29,7 @@ public class NetworkView extends UITester {
     browser().element(By.ref("membership", "[1]")).hasText("Scott M. Hofer, PhD. (Oregon Health & Science University )");
 
     browser().element(By.text("Participants")).click();
+    browser().pause(600);
     browser().element(By.xpath("//*[text() = '1,000 to 4,999']/..//a")).click();
     browser().element(By.xpath("(//div[@display='search.display']//td)[1]")).hasText("CLS");
   }
