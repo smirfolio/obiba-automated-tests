@@ -33,7 +33,7 @@ public class StudyDatasetView extends UITester {
     browser().element(By.xpath("//h2[contains(text(),'Study')]/..//*[text()='Name']/../td")).hasText("Longitudinal Aging Study Amsterdam");
     browser().element(By.xpath("//h2[contains(text(),'Study')]/..//*[text()='Population']/../td")).hasText("LASA third cohort");
     browser().element(By.xpath("//h2[contains(text(),'Study')]/..//*[text()='Data Collection Event']/../td")).hasText("LASA3 wave A/B");
-    browser().element(By.xpath("//h2[contains(text(),'Study')]/..//*[text()='Study design']/../td")).hasText("cohort study");
+    browser().element(By.xpath("//h2[contains(text(),'Study')]/..//*[text()='Study design']/../td")).hasText("Cohort");
     browser().element(By.xpath("//h2[contains(text(),'Study')]/..//*[text()='Number of participants']/../td")).hasText("5,132");
     browser().element(By.xpath("//h2[contains(text(),'Study')]/..//*[text()='Countries']/../td")).hasText("Netherlands");
   }

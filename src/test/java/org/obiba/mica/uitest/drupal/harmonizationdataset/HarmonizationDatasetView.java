@@ -3,6 +3,7 @@ package org.obiba.mica.uitest.drupal.harmonizationdataset;
 import org.obiba.mica.uitest.utils.By;
 import org.obiba.mica.uitest.utils.UITester;
 import org.junit.Test;
+import org.openqa.selenium.Keys;
 
 public class HarmonizationDatasetView extends UITester {
 
@@ -30,6 +31,8 @@ public class HarmonizationDatasetView extends UITester {
     browser().element(firstLinkedStudy()).hasText("Atlantic PATH");
 
     browser().element(firstHarmonizedVariable()).hasText("A_ADM_STUDY_ID");
+    browser().element(By.xpath("//div[@id='variables-table']")).enterTextUsingKeyboard(Keys.PAGE_DOWN);
+    browser().pause(100);
     browser().element(By.xpath("//div[@id='variables-table']//*[text()='Next']")).click();
     browser().element(firstHarmonizedVariable()).hasText("A_HS_DENTAL_VISIT_LAST");
   }
