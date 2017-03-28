@@ -47,6 +47,7 @@ public class StudyCounts extends UITester {
 
     browser().element(By.ref("study", "[2]", "studyVariableCount")).hasText("4,081 Study Variables");
     browser().element(By.ref("study", "[2]", "studyVariableCount")).click();
+    browser().pause(500);
     browser().element(By.ref("search-criterion", "[1]")).hasText("NuAge");
     browser().element(By.ref("search-criterion", "[2]")).hasText("Study");
 

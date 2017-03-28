@@ -26,8 +26,8 @@ public class StudyView extends UITester {
     browser().navigate().to("http://localhost/drupal/mica/study/atlantic-path");
 
     browser().element(By.text("Atlantic PATH Website")).hasAttribute("href", "http://atlanticpath.ca/");
-    browser().element(By.xpath("//*[text() = 'Contact']/..//li[1]")).hasText("Dr. Louise Parker (Dalhousie University )");
-    browser().element(By.xpath("//*[text() = 'Investigator']/..//li[1]")).hasText("Dr. David W Hoskin (Dalhousie University )");
+    browser().element(By.xpath("//*[text() = 'Contacts']/..//li[1]")).hasText("Dr. Louise Parker (Dalhousie University )");
+    browser().element(By.xpath("//*[text() = 'Investigators']/..//li[1]")).hasText("Dr. David W Hoskin (Dalhousie University )");
 
     browser().element(By.xpath("(//*[@id='variables_overview']//tr)[2]/td[1]")).hasText("Atlantic PATH - Pilot");
     browser().element(By.xpath("(//*[@id='variables_overview']//tr)[2]/td[3]")).hasText("2009");
@@ -59,29 +59,27 @@ public class StudyView extends UITester {
 
     browser().navigate().to("http://localhost/drupal/mica/study/cag");
 
-    validateFirstMembership();
+    validateSecondMembershipModal();
+    validateThirdMembershipModal();
+  }
 
+  private void closeCurrentModal() {
     browser().element(currentModalBy()).element(By.className("close")).click();
-
-    validateThirdMembership();
+    browser().pause(200);
   }
 
-  private void validateFirstMembership() {
-    browser().element(By.ref("membership", "[1]")).click();
-    browser().element(currentModalBy()).element(By.className("modal-title")).hasText("Prof. Philip Awadalla");
-    browser().element(currentModalThenRefs("modal-body", "email")).hasText("philip.awadalla@umontreal.ca");
-    browser().element(currentModalThenRefs("modal-body", "institutionIdentifier")).hasText("CHU Sainte-Justine Research Centre");
-    browser().element(currentModalThenRefs("modal-body", "institutionAddress")).hasText(is(
-            "3175 Chemin de la Cote-Sainte-Catherine\n" +
-                    "Montreal\n" +
-                    "H3T 1C5\n" +
-                    "Quebec, Canada"));
-  }
-
-  private void validateThirdMembership() {
-    browser().element(By.ref("membership", "[3]")).click();
+  private void validateSecondMembershipModal() {
+    browser().element(By.ref("membership", "[2]")).click();
     browser().element(currentModalBy()).element(By.className("modal-title")).hasText("Guy Rouleau");
     browser().element(currentModalThenRefs("modal-body", "institutionIdentifier")).hasText("Université de Montréal");
+    closeCurrentModal();
+  }
+
+  private void validateThirdMembershipModal() {
+    browser().element(By.ref("membership", "[3]")).click();
+    browser().element(currentModalBy()).element(By.className("modal-title")).hasText("Prof. Philip Awadalla");
+    browser().element(currentModalThenRefs("modal-body", "institutionIdentifier")).hasText("CHU Sainte-Justine Research Centre");
+    closeCurrentModal();
   }
 
   private org.openqa.selenium.By firstLinkedDataset() {

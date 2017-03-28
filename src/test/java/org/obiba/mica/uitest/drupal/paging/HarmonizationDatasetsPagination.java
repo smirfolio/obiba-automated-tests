@@ -3,6 +3,8 @@ package org.obiba.mica.uitest.drupal.paging;
 import org.obiba.mica.uitest.utils.By;
 import org.obiba.mica.uitest.utils.UITester;
 import org.junit.Test;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 public class HarmonizationDatasetsPagination extends UITester {
 
@@ -11,7 +13,7 @@ public class HarmonizationDatasetsPagination extends UITester {
 
     browser().navigate().to("http://localhost/drupal/mica/harmonization-dataset/cptp-coreqx");
     assertThatWeAreOnFirstPage();
-
+    browser().element(inPager("//*[text()='2']")).hoverWithMouse();
     browser().element(inPager("//*[text()='2']")).click();
     assertThatWeAreOnSecondPage();
 

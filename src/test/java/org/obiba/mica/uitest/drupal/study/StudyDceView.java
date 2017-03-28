@@ -16,8 +16,8 @@ public class StudyDceView extends UITester {
 
     browser().navigate().to("http://localhost/drupal/mica/study/cag");
 
-    browser().element(firstDceNameWithSinglePop()).hasText("CaG - Baseline Recruitment");
-    browser().element(firstDceNameWithSinglePop()).click();
+    browser().element(firstDceNameWithSinglePop(false)).hasText("CaG - Baseline Recruitment");
+    browser().element(firstDceNameWithSinglePop(true)).click();
 
     browser().element(currentModalThenRefs("modal-dce-description")).hasText(startsWith("During the phase"));
     browser().element(currentModalThenRefs("modal-dce-startYear")).hasText("2007 (January)");
@@ -31,13 +31,13 @@ public class StudyDceView extends UITester {
 
     browser().navigate().to("http://localhost/drupal/mica/study/cls");
 
-    browser().element(firstDceNameWithSinglePop()).hasText("CLS wave 1");
-    browser().element(firstDceNameWithSinglePop()).click();
+    browser().element(firstDceNameWithSinglePop(false)).hasText("CLS wave 1");
+    browser().element(firstDceNameWithSinglePop(true)).click();
 
     browser().element(currentModalThenRefs("file-search-result-list", "file-name", "[2]")).hasText("Wave 1 informant self-completion.pdf");
     browser().element(currentModalThenRefs("file-search-result-list", "file-type", "[2]")).hasText("questionnaire");
     browser().element(currentModalThenRefs("file-search-result-list", "file-size", "[2]")).hasText("152.26 KB");
-    browser().element(currentModalThenRefs("file-search-result-list", "file-lastModification", "[1]")).hasText("3 months ago");
+    browser().element(currentModalThenRefs("file-search-result-list", "file-lastModification", "[1]")).hasText("4 months ago");
   }
 
   @Test
@@ -45,8 +45,8 @@ public class StudyDceView extends UITester {
 
     browser().navigate().to("http://localhost/drupal/mica/study/cls");
 
-    browser().element(firstDceNameWithSinglePop()).hasText("CLS wave 1");
-    browser().element(firstDceNameWithSinglePop()).click();
+    browser().element(firstDceNameWithSinglePop(false)).hasText("CLS wave 1");
+    browser().element(firstDceNameWithSinglePop(true)).click();
 
     browser().element(currentModalThenRefs("file-search-input")).type("interview");
     browser().element(currentModalThenRefs("file-search-input")).enterTextUsingKeyboard(Keys.ENTER);
@@ -55,7 +55,7 @@ public class StudyDceView extends UITester {
     browser().element(currentModalThenRefs("file-search-result-list", "file-name", "[2]")).hasText("Wave 1 informant interview.pdf");
     browser().element(currentModalThenRefs("file-search-result-list", "file-type", "[2]")).hasText("questionnaire");
     browser().element(currentModalThenRefs("file-search-result-list", "file-size", "[2]")).hasText("1.11 MB");
-    browser().element(currentModalThenRefs("file-search-result-list", "file-lastModification", "[2]")).hasText("3 months ago");
+    browser().element(currentModalThenRefs("file-search-result-list", "file-lastModification", "[2]")).hasText("4 months ago");
     browser().element(currentModalThenRefs("file-search-result-list", "file-parent", "[2]")).hasText("/");
   }
 
@@ -64,8 +64,8 @@ public class StudyDceView extends UITester {
 
     browser().navigate().to("http://localhost/drupal/mica/study/cls");
 
-    browser().element(firstDceNameWithSinglePop()).hasText("CLS wave 1");
-    browser().element(firstDceNameWithSinglePop()).click();
+    browser().element(firstDceNameWithSinglePop(false)).hasText("CLS wave 1");
+    browser().element(firstDceNameWithSinglePop(true)).click();
 
     browser().element(currentModalThenRefs("file-search-result-list", "file-size", "[2]")).hasText("152.26 KB");
     browser().element(By.xpath("//a[@title='Search 10 most recently modified files']")).click();
@@ -78,55 +78,64 @@ public class StudyDceView extends UITester {
 
     browser().navigate().to("http://localhost/drupal/mica/study/lasa");
 
-    browser().element(dceNumberMultiplePop(1, 1)).hasText("LASA Wave B");
-    browser().element(dceNumberMultiplePop(1, 2)).hasText("Face-to-face interview.");
-    browser().element(dceNumberMultiplePop(1, 3)).hasText("1992 (September)");
-    browser().element(dceNumberMultiplePop(1, 4)).hasText("1993 (September)");
-    browser().element(dceNumberMultiplePop(1, 1)).click();
+    browser().element(dceNumberMultiplePop(1, 1, false)).hasText("LASA Wave B");
+    browser().element(dceNumberMultiplePop(1, 2, false)).hasText("Face-to-face interview.");
+    browser().element(dceNumberMultiplePop(1, 3, false)).hasText("1992 (September)");
+    browser().element(dceNumberMultiplePop(1, 4, false)).hasText("1993 (September)");
+    browser().element(dceNumberMultiplePop(1, 1, true)).click();
     browser().element(currentModalThenRefs("modal-dce-description")).hasText("Face-to-face interview.");
     browser().element(currentModalBy()).element(By.className("close")).click();
     browser().pause(300);
 
-    browser().element(dceNumberMultiplePop(4, 1)).hasText("LASA Wave E");
-    browser().element(dceNumberMultiplePop(4, 2)).hasText("Main face-to-face interview, medical in...");
-    browser().element(dceNumberMultiplePop(4, 3)).hasText("2001 (September)");
-    browser().element(dceNumberMultiplePop(4, 4)).hasText("2002 (October)");
-    browser().element(dceNumberMultiplePop(4, 1)).click();
+    browser().element(dceNumberMultiplePop(4, 1, false)).hasText("LASA Wave E");
+    browser().element(dceNumberMultiplePop(4, 2, false)).hasText("Main face-to-face interview, medical in...");
+    browser().element(dceNumberMultiplePop(4, 3, false)).hasText("2001 (September)");
+    browser().element(dceNumberMultiplePop(4, 4, false)).hasText("2002 (October)");
+    browser().element(dceNumberMultiplePop(4, 1, true)).click();
     browser().element(currentModalThenRefs("modal-dce-description")).hasText(startsWith("Main face-to-face interview,"));
     browser().element(currentModalBy()).element(By.className("close")).click();
 
-    scrollUpManyTimes(4);
+    browser().pause(300);
 
     browser().element(By.ref("population-tab", "[2]")).click();
 
-    browser().element(dceNumberMultiplePop(1, 1)).hasText("LASA2 Wave A/B");
-    browser().element(dceNumberMultiplePop(1, 2)).hasText("Main face-to-face interview and medical in-home...");
-    browser().element(dceNumberMultiplePop(1, 3)).hasText("2002 (September)");
-    browser().element(dceNumberMultiplePop(1, 4)).hasText("2003 (September)");
-    scrollUpManyTimes(4);
-    browser().element(dceNumberMultiplePop(1, 1)).click();
+    browser().element(dceNumberMultiplePop(1, 1, false)).hasText("LASA2 Wave A/B");
+    browser().element(dceNumberMultiplePop(1, 2, false)).hasText("Main face-to-face interview and medical in-home...");
+    browser().element(dceNumberMultiplePop(1, 3, false)).hasText("2002 (September)");
+    browser().element(dceNumberMultiplePop(1, 4, false)).hasText("2003 (September)");
+    browser().element(dceNumberMultiplePop(1, 1, true)).click();
+    browser().pause(300);
     browser().element(currentModalThenRefs("modal-dce-description")).hasText(startsWith("Main face-to-face interview"));
     browser().element(currentModalBy()).element(By.className("close")).click();
 
   }
 
-  private org.openqa.selenium.By firstDceNameWithSinglePop() {
-    return dceNumber(1, 1, false);
+  private org.openqa.selenium.By firstDceNameWithSinglePop(boolean toClick) {
+    return dceNumber(1, 1, false, toClick);
+  }
+
+  private org.openqa.selenium.By firstDceNameWithMultiplePop(boolean toClick) {
+    return dceNumber(1, 1, true, toClick);
   }
 
   private String activePopulationContentXpath() {
     return "//*[@test-ref='population-tab-content']/*[contains(@class,'active')]";
   }
 
-  private org.openqa.selenium.By dceNumberMultiplePop(int dceLine, int dceColumn) {
-    return dceNumber(dceLine, dceColumn, true);
+  private org.openqa.selenium.By dceNumberSinglePop(int dceLine, int dceColumn, boolean toClick) {
+    return dceNumber(dceLine, dceColumn, false, toClick);
   }
 
-  private org.openqa.selenium.By dceNumber(int dceLine, int dceColumn, boolean multiplePopulations) {
+  private org.openqa.selenium.By dceNumberMultiplePop(int dceLine, int dceColumn, boolean toClick) {
+    return dceNumber(dceLine, dceColumn, true, toClick);
+  }
 
-    String finalXpath = String.format("((%s//*[@id='variables_overview']//tbody//tr)[%s]//td)[%s]",
+  private org.openqa.selenium.By  dceNumber(int dceLine, int dceColumn, boolean multiplePopulations, boolean toClick) {
+String aHref = toClick ? "//a": "";
+    String finalXpath = String.format("((%s//*[@id='variables_overview']//tbody//tr)[%s]//td%s)[%s]",
             multiplePopulations ? activePopulationContentXpath() : uniquePopulationContentXpath(),
-            dceLine, dceColumn);
+            dceLine, aHref, dceColumn);
+    System.out.println(finalXpath);
     return By.xpath(finalXpath);
   }
 
