@@ -30,6 +30,7 @@ public class StudyCounts extends UITester {
 
     browser().element(By.ref("study", "[2]", "datasetCount")).hasText("4 Datasets");
     browser().element(By.ref("study", "[2]", "datasetCount")).click();
+    browser().pause(500);
     browser().element(By.ref("search-criterion")).hasText("NuAge");
 
     browser().element(By.ref("search-counts", "variables")).hasText("4,081");

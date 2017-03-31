@@ -11,7 +11,7 @@ public class NetworkList extends UITester {
   @Test
   public void can_sort_networks_by_acronym() {
 
-    browser().navigate().to("http://localhost/drupal//mica/networks");
+    browser().navigate().to("http://localhost/drupal/mica/networks");
 
     browser().element(By.id("edit-search-sort")).element(By.xpath("//*[@value='acronym']")).click();
     networkNameNumber(2).hasText("CCLSA - Constances/CLSA");
@@ -35,7 +35,7 @@ public class NetworkList extends UITester {
   @Test
   public void can_filter_list() {
 
-    browser().navigate().to("http://localhost/drupal//mica/networks?search-sort=acronym");
+    browser().navigate().to("http://localhost/drupal/mica/networks?search-sort=acronym");
 
     browser().element(By.id("edit-search-query")).enterTextUsingKeyboard("cls");
     browser().element(By.id("edit-search-query")).enterTextUsingKeyboard(Keys.ENTER);

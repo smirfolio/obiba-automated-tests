@@ -13,6 +13,7 @@ public class NetworkCounts extends UITester {
 
     browser().element(By.ref("network", "[2]", "studyCount")).hasText("4 Studies");
     browser().element(By.ref("network", "[2]", "studyCount")).click();
+    browser().pause(300);
     browser().element(By.ref("search-criterion")).hasText("QSC");
 
     browser().element(By.ref("search-counts", "variables")).hasText("6,781");
@@ -30,6 +31,7 @@ public class NetworkCounts extends UITester {
 
     browser().element(By.ref("network", "[2]", "studyWithVariablesCount")).hasText("3 Studies with Variables");
     browser().element(By.ref("network", "[2]", "studyWithVariablesCount")).click();
+    browser().pause(300);
     browser().element(By.ref("search-criterion", "[1]")).hasText("QSC");
     browser().element(By.ref("search-criterion", "[2]")).hasText("Study");
 
@@ -65,6 +67,7 @@ public class NetworkCounts extends UITester {
 
     browser().element(By.ref("network", "[2]", "studyVariableCount")).hasText("6,009 Study Variables");
     browser().element(By.ref("network", "[2]", "studyVariableCount")).click();
+    browser().pause(400);
     browser().element(By.ref("search-criterion", "[1]")).hasText("QSC");
     browser().element(By.ref("search-criterion", "[2]")).hasText("Study");
 
