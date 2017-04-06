@@ -11,7 +11,7 @@ public class StudyDatasetView extends UITester {
 
     browser().navigate().to("http://localhost/drupal");
 
-    browser().element(By.text("Datasets")).hoverWithMouse();
+    browser().element(By.text("Datasets ")).click();
     browser().element(By.text("Study Datasets")).click();
     browser().element(By.xpath("(//h4)[1]")).hasText("CLS-Wave1");
 

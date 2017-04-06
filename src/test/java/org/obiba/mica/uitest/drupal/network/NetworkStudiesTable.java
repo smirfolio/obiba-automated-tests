@@ -43,7 +43,6 @@ public class NetworkStudiesTable extends UITester{
     browser().element(By.xpath("(//table[@id='table-studies']//td)[1]")).hasText("Atlantic PATH");
     browser().element(By.xpath("(//table[@id='table-studies']//td)[6]")).hasText("772");
     browser().element(By.xpath("(//table[@id='table-studies']//td)[6]//a")).click();
-    browser().pause(500);
     browser().element(By.ref("search-criterion", "[1]")).hasText("CPTP");
     browser().element(By.ref("search-criterion", "[2]")).hasText("Atlantic PATH");
     browser().element(By.ref("variables")).hasText("772");

@@ -12,7 +12,7 @@ public class HarmonizationDatasetView extends UITester {
 
     browser().navigate().to("http://localhost/drupal");
 
-    browser().element(By.text("Datasets")).hoverWithMouse();
+    browser().element(By.text("Datasets ")).click();
     browser().element(By.text("Harmonization Datasets")).click();
     browser().element(By.xpath("(//h4)[1]")).hasText("CPTPCoreQx - CPTP Health and Risk Factor Questionnaire DataSchema");
 
