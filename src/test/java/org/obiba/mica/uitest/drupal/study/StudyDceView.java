@@ -37,7 +37,6 @@ public class StudyDceView extends UITester {
     browser().element(currentModalThenRefs("file-search-result-list", "file-name", "[2]")).hasText("Wave 1 informant self-completion.pdf");
     browser().element(currentModalThenRefs("file-search-result-list", "file-type", "[2]")).hasText("questionnaire");
     browser().element(currentModalThenRefs("file-search-result-list", "file-size", "[2]")).hasText("152.26 KB");
-    browser().element(currentModalThenRefs("file-search-result-list", "file-lastModification", "[1]")).hasText("3 months ago");
   }
 
   @Test
@@ -55,7 +54,6 @@ public class StudyDceView extends UITester {
     browser().element(currentModalThenRefs("file-search-result-list", "file-name", "[2]")).hasText("Wave 1 informant interview.pdf");
     browser().element(currentModalThenRefs("file-search-result-list", "file-type", "[2]")).hasText("questionnaire");
     browser().element(currentModalThenRefs("file-search-result-list", "file-size", "[2]")).hasText("1.11 MB");
-    browser().element(currentModalThenRefs("file-search-result-list", "file-lastModification", "[2]")).hasText("3 months ago");
     browser().element(currentModalThenRefs("file-search-result-list", "file-parent", "[2]")).hasText("/");
   }
 
@@ -137,7 +135,7 @@ public class StudyDceView extends UITester {
   private void scrollUpManyTimes(int scrollUpTimesNumber) {
     assertThat(scrollUpTimesNumber, greaterThan(0));
     for (; scrollUpTimesNumber > 0; scrollUpTimesNumber--) {
-      browser().element(By.xpath("(//*)[1]")).enterTextUsingKeyboard(Keys.PAGE_UP);
+      browser().element(By.xpath("(//div)[1]")).enterTextUsingKeyboard(Keys.PAGE_UP);
     }
     browser().pause(200);
   }

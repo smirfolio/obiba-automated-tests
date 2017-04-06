@@ -26,8 +26,8 @@ public class StudyView extends UITester {
     browser().navigate().to("http://localhost/drupal/mica/study/atlantic-path");
 
     browser().element(By.text("Atlantic PATH Website")).hasAttribute("href", "http://atlanticpath.ca/");
-    browser().element(By.xpath("//*[text() = 'Contact']/..//li[1]")).hasText("Dr. Louise Parker (Dalhousie University )");
-    browser().element(By.xpath("//*[text() = 'Investigator']/..//li[1]")).hasText("Dr. David W Hoskin (Dalhousie University )");
+    browser().element(By.xpath("//*[text() = 'Contact']/..//li[1]")).hasText("Dr. Louise Parker (Dalhousie University)");
+    browser().element(By.xpath("//*[text() = 'Investigator']/..//li[1]")).hasText("Dr. David W Hoskin (Dalhousie University)");
 
     browser().element(By.xpath("(//*[@id='variables_overview']//tr)[2]/td[1]")).hasText("Atlantic PATH - Pilot");
     browser().element(By.xpath("(//*[@id='variables_overview']//tr)[2]/td[3]")).hasText("2009");
@@ -62,7 +62,7 @@ public class StudyView extends UITester {
     validateFirstMembership();
 
     browser().element(currentModalBy()).element(By.className("close")).click();
-
+    browser().pause(300);
     validateThirdMembership();
   }
 
