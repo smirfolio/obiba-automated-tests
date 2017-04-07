@@ -31,11 +31,11 @@ public class NetworkAffiliatedMembers extends UITester {
     //Search study
     browser().element(By.xpath("(//input[@type='search'])[1]")).clear();
     browser().element(By.xpath("(//input[@type='search'])[1]")).type("nuage");
-    browser().element(By.xpath("(//div[@id='person-table_wrapper']//td)[3]")).hasText("NuAge (investigator)");
+    browser().element(By.xpath("(//div[@id='person-table_wrapper']//td)[3]")).hasText("NuAge (Investigators)");
     //Search network
     browser().element(By.xpath("(//input[@type='search'])[1]")).clear();
     browser().element(By.xpath("(//input[@type='search'])[1]")).type("qsc");
-    browser().element(By.xpath("(//div[@id='person-table_wrapper']//td)[4]")).hasText("QSC (investigator)");
+    browser().element(By.xpath("(//div[@id='person-table_wrapper']//td)[4]")).hasText("QSC (Investigators)");
   }
 
   @Test
