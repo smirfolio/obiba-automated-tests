@@ -26,7 +26,7 @@ public class NetworkView extends UITester {
     browser().navigate().to("http://localhost/drupal/mica/network/ialsa");
 
     browser().element(By.text("IALSA website")).hasAttribute("href", "http://www.ialsa.org/");
-    browser().element(By.ref("membership", "[1]")).hasText("Scott M. Hofer, PhD. (Oregon Health & Science University )");
+    browser().element(By.ref("membership", "[1]")).hasText("Scott M. Hofer, PhD. (Oregon Health & Science University)");
 
     browser().element(By.text("Participants")).click();
     browser().pause(600);
