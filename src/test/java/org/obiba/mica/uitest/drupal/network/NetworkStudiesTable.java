@@ -10,11 +10,9 @@ import static org.hamcrest.Matchers.startsWith;
 
 public class NetworkStudiesTable extends UITester{
 
-
-
   @Test
   public void list_correct_studies_list(){
-    get_network();
+    got_to_cptp_network();
     browser().element(By.xpath("((//div[@class='markdown']))//p[1]")).hasText(startsWith("The Canadian Partnership for Tomorrow Project (CPTP)"));
     browser().element(By.xpath("(//div[@id='table-studies_info'])")).hasText("Showing 1 to 5 of 5 entries");
     browser().element(By.xpath("(//table[@id='table-studies']//td)[1]")).hasText("Atlantic PATH");
@@ -29,16 +27,16 @@ public class NetworkStudiesTable extends UITester{
 
   @Test
   public void navigate_to_studies() throws Exception {
-    get_network();
+    got_to_cptp_network();
     browser().element(By.xpath("((//div[@class='markdown']))//p[1]")).hasText(startsWith("The Canadian Partnership for Tomorrow Project (CPTP)"));
     browser().element(By.xpath("(//table[@id='table-studies']//td)[1]")).hasText("Atlantic PATH");
     browser().element(By.xpath("(//table[@id='table-studies']//td)[1]//a")).click();
-    detailStudyTest();
+    validate_study_test();
   }
 
   @Test
   public void navigate_to_study_variables() throws Exception {
-    get_network();
+    got_to_cptp_network();
     browser().element(By.xpath("(//table[@id='table-studies']//td)[1]")).hasText("Atlantic PATH");
     browser().element(By.xpath("(//table[@id='table-studies']//td)[6]")).hasText("772");
     browser().element(By.xpath("(//table[@id='table-studies']//td)[6]//a")).click();
@@ -51,7 +49,7 @@ public class NetworkStudiesTable extends UITester{
 
   @Test
   public void sort_studies_table() throws Exception{
-    get_network();
+    got_to_cptp_network();
     browser().element(By.xpath("(//div[@id='table-studies_info'])")).hasText("Showing 1 to 5 of 5 entries");
     browser().element(By.xpath("(//table[@id='table-studies']//td)[1]")).hasText("Atlantic PATH");
     browser().element(By.xpath("(//table[@id='table-studies']//th)[1]")).click();
@@ -62,7 +60,7 @@ public class NetworkStudiesTable extends UITester{
 
   @Test
   public void search_in_studies_table() throws Exception{
-    get_network();
+    got_to_cptp_network();
     browser().element(By.xpath("(//div[@id='table-studies_info'])")).hasText("Showing 1 to 5 of 5 entries");
     browser().element(By.xpath("(//table[@id='table-studies']//td)[1]")).hasText("Atlantic PATH");
     browser().element(By.xpath("(//input[@type='search'])[1]")).clear();
@@ -71,13 +69,11 @@ public class NetworkStudiesTable extends UITester{
 
   }
 
-  private void get_network(){
-    browser().navigate().to("http://localhost/drupal/mica/networks");
-    browser().element(By.xpath("(//h4)[3]")).hasText("CPTP - Canadian Partnership for Tomorrow Project");
-    browser().element(By.xpath("(//h4)[3]//a")).click();
+  private void got_to_cptp_network(){
+    browser().navigate().to("http://localhost/drupal/mica/network/cptp");
   }
 
-  private void detailStudyTest(){
+  private void validate_study_test(){
     browser().element(By.text("Atlantic PATH Website")).hasAttribute("href", "http://atlanticpath.ca/");
     browser().element(By.xpath("//*[text() = 'Contacts']/..//li[1]")).hasText("Dr. Louise Parker (Dalhousie University)");
     browser().element(By.xpath("//*[text() = 'Investigators']/..//li[1]")).hasText("Dr. David W Hoskin (Dalhousie University)");
