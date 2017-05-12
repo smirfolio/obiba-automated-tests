@@ -14,9 +14,9 @@ public class NetworkView extends UITester {
     browser().navigate().to("http://localhost/drupal");
 
     browser().element(By.text("Networks")).click();
-    browser().element(By.xpath("(//h4)[1]")).hasText("IALSA - Integrative Analysis of Longitudinal Studies of Aging");
+    browser().element(By.xpath("(//h4)[4]")).hasText("IALSA - Integrative Analysis of Longitudinal Studies of Aging");
 
-    browser().element(By.xpath("(//h4)[1]/a")).click();
+    browser().element(By.xpath("(//h4)[4]/a")).click();
     browser().element(By.text("IALSA website")).hasAttribute("href", "http://www.ialsa.org/");
   }
 
@@ -42,7 +42,7 @@ public class NetworkView extends UITester {
     browser().element(By.text("Search Variables")).click();
 
     browser().element(By.ref("search-criterion")).hasText("QSC");
-    browser().element(By.ref("search-results", "name", "[1]")).hasText("ADL_ABLAP_TRM");
+    browser().element(By.ref("search-results", "name", "[1]")).hasText("startdate");
   }
 
   @Test

@@ -24,7 +24,7 @@ public class StudyList extends UITester {
   @Test
   public void can_sort_studies_by_name() {
 
-    browser().navigate().to("http://localhost/drupal/mica/studies?search-sort=numberOfParticipants.participant.number");
+    browser().navigate().to("http://localhost/drupal/mica/studies?search-sort=model.numberOfParticipants.participant.number");
 
     browser().element(By.id("edit-search-sort")).element(By.xpath("//*[@value='name']")).click();
     studyNameNumber(3).hasText("CaG - CARTaGENE");
@@ -38,7 +38,7 @@ public class StudyList extends UITester {
 
     browser().navigate().to("http://localhost/drupal/mica/studies");
 
-    browser().element(By.id("edit-search-sort")).element(By.xpath("//*[@value='numberOfParticipants.participant.number']")).click();
+    browser().element(By.id("edit-search-sort")).element(By.xpath("//*[@value='model.numberOfParticipants.participant.number']")).click();
     studyNameNumber(1).hasText("CLS - Canberra Longitudinal Study");
 
     browser().element(By.id("edit-search-sort-order")).element(By.xpath("//*[@value='desc']")).click();
@@ -50,11 +50,11 @@ public class StudyList extends UITester {
 
     browser().navigate().to("http://localhost/drupal/mica/studies");
 
-    browser().element(By.id("edit-search-sort")).element(By.xpath("//*[@value='numberOfParticipants.participant.number']")).click();
+    browser().element(By.id("edit-search-sort")).element(By.xpath("//*[@value='model.numberOfParticipants.participant.number']")).click();
     studyNameNumber(1).hasText("CLS - Canberra Longitudinal Study");
 
     new StudyListPagination().pagerElement().element(By.text("next")).click();
-    studyNameNumber(1).hasText("CaG - CARTaGENE");
+    studyNameNumber(1).hasText("BCGP - BC Generations Project");
   }
 
   @Test

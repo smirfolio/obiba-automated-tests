@@ -54,6 +54,6 @@ public class StudyDatasetCounts extends UITester {
     browser().element(By.ref("search-counts", "studies")).hasText("1");
     browser().element(By.ref("search-counts", "networks")).hasText("4");
 
-    browser().element(By.ref("search-results", "name", "[1]")).hasText("ADL_ABLAP_TRM");
+    browser().element(By.ref("search-results", "name", "[1]")).hasText("startdate");
   }
 }

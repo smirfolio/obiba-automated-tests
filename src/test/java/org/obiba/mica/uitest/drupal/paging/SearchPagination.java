@@ -31,12 +31,12 @@ public class SearchPagination extends Pagination {
 
   protected void assertThatWeAreOnFirstPage() {
     browser().pause(500);
-    browser().element(By.ref("search-results", "name", "[1]")).hasText("v75");
+    browser().element(By.ref("search-results", "name", "[1]")).hasText("v75b");
   }
 
   protected void assertThatWeAreOnSecondPage() {
     browser().pause(500);
-    browser().element(By.ref("search-results", "name", "[1]")).hasText("ALC_EVER_TRM");
+    browser().element(By.ref("search-results", "name", "[1]")).hasText("ALC_RDWD_NB_TRM");
   }
 
   protected void assertThatWeAreOnLastPage() {

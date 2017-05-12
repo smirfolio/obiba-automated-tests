@@ -22,7 +22,7 @@ public class UITester {
 
   @BeforeClass
   public static void setUp() throws Exception {
-    if (System.getenv("WEBDRIVER").contains("chrome")) {
+    if (System.getenv("WEBDRIVER") != null && System.getenv("WEBDRIVER").contains("chrome")) {
       DesiredCapabilities capabilities = DesiredCapabilities.chrome();
       ChromeOptions options = new ChromeOptions();
       options.addArguments("--incognito");

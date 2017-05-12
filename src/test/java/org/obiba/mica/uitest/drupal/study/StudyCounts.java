@@ -37,7 +37,7 @@ public class StudyCounts extends UITester {
     browser().element(By.ref("search-counts", "studies")).hasText("1");
     browser().element(By.ref("search-counts", "networks")).hasText("3");
 
-    browser().element(By.ref("search-results", "acronym", "[1]")).hasText("NuAge-T1");
+    browser().element(By.ref("search-results", "acronym", "[1]")).hasText("NuAge-T3");
   }
 
   @Test
@@ -55,6 +55,6 @@ public class StudyCounts extends UITester {
     browser().element(By.ref("search-counts", "studies")).hasText("1");
     browser().element(By.ref("search-counts", "networks")).hasText("3");
 
-    browser().element(By.ref("search-results", "name", "[1]")).hasText("A1BT1");
+    browser().element(By.ref("search-results", "name", "[1]")).hasText("A1BT3");
   }
 }

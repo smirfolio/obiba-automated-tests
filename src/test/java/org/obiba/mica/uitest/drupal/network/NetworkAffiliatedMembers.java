@@ -63,9 +63,9 @@ public class NetworkAffiliatedMembers extends UITester {
 
   private void networkOpenMembersPopup() {
     browser().navigate().to("http://localhost/drupal/mica/networks");
-    browser().element(By.xpath("(//h4)[2]")).hasText("QSC - Quebec Study Catalogue");
+    browser().element(By.xpath("(//h4)[3]")).hasText("QSC - Quebec Study Catalogue");
 
-    browser().element(By.xpath("(//h4)[2]/a")).click();
+    browser().element(By.xpath("(//h4)[3]/a")).click();
     browser().element(By.xpath("(//button[@data-target='#associated-people'])[1]")).hasText("Affiliated Members");
     browser().element(By.xpath("(//button[@data-target='#associated-people'])[1]")).click();
   }
