@@ -11,8 +11,8 @@ public class NetworkCounts extends UITester {
 
     browser().navigate().to("http://localhost/drupal/mica/networks");
 
-    browser().element(By.ref("network", "[2]", "studyCount")).hasText("4 Studies");
-    browser().element(By.ref("network", "[2]", "studyCount")).click();
+    browser().element(By.ref("network", "[3]", "studyCount")).hasText("4 Studies");
+    browser().element(By.ref("network", "[3]", "studyCount")).click();
     browser().element(By.ref("search-criterion")).hasText("QSC");
 
     browser().element(By.ref("search-counts", "variables")).hasText("6,781");
@@ -28,8 +28,8 @@ public class NetworkCounts extends UITester {
 
     browser().navigate().to("http://localhost/drupal/mica/networks");
 
-    browser().element(By.ref("network", "[2]", "studyWithVariablesCount")).hasText("3 Studies with Variables");
-    browser().element(By.ref("network", "[2]", "studyWithVariablesCount")).click();
+    browser().element(By.ref("network", "[3]", "studyWithVariablesCount")).hasText("3 Studies with Variables");
+    browser().element(By.ref("network", "[3]", "studyWithVariablesCount")).click();
     browser().element(By.ref("search-criterion", "[1]")).hasText("QSC");
     browser().element(By.ref("search-criterion", "[2]")).hasText("Study");
 
@@ -46,8 +46,8 @@ public class NetworkCounts extends UITester {
 
     browser().navigate().to("http://localhost/drupal/mica/networks");
 
-    browser().element(By.ref("network", "[2]", "datasetCount")).hasText("6 Datasets");
-    browser().element(By.ref("network", "[2]", "datasetCount")).click();
+    browser().element(By.ref("network", "[3]", "datasetCount")).hasText("6 Datasets");
+    browser().element(By.ref("network", "[3]", "datasetCount")).click();
     browser().element(By.ref("search-criterion", "[1]")).hasText("QSC");
 
     browser().element(By.ref("search-counts", "variables")).hasText("6,781");
@@ -63,8 +63,8 @@ public class NetworkCounts extends UITester {
 
     browser().navigate().to("http://localhost/drupal/mica/networks");
 
-    browser().element(By.ref("network", "[2]", "studyVariableCount")).hasText("6,009 Study Variables");
-    browser().element(By.ref("network", "[2]", "studyVariableCount")).click();
+    browser().element(By.ref("network", "[3]", "studyVariableCount")).hasText("6,009 Study Variables");
+    browser().element(By.ref("network", "[3]", "studyVariableCount")).click();
     browser().element(By.ref("search-criterion", "[1]")).hasText("QSC");
     browser().element(By.ref("search-criterion", "[2]")).hasText("Study");
 
@@ -73,6 +73,6 @@ public class NetworkCounts extends UITester {
     browser().element(By.ref("search-counts", "studies")).hasText("3");
     browser().element(By.ref("search-counts", "networks")).hasText("1");
 
-    browser().element(By.ref("search-results", "name", "[1]")).hasText("ADL_ABLAP_TRM");
+    browser().element(By.ref("search-results", "name", "[1]")).hasText("startdate");
   }
 }
