@@ -1,10 +1,10 @@
 package org.obiba.mica.uitest.drupal.harmonizationdataset;
 
-import org.obiba.mica.uitest.utils.By;
-import org.obiba.mica.uitest.utils.UITester;
 import org.junit.Test;
+import org.obiba.mica.uitest.drupal.DrupalUITester;
+import org.obiba.mica.uitest.utils.By;
 
-public class HarmonizationDatasetView extends UITester {
+public class HarmonizationDatasetView extends DrupalUITester {
 
   @Test
   public void validate_navigation_to_harmonizationDataset_details() {
@@ -31,6 +31,18 @@ public class HarmonizationDatasetView extends UITester {
     browser().element(firstHarmonizedVariable()).hasText("A_ADM_STUDY_ID");
     browser().element(By.xpath("//div[@id='variables-table']//*[text()='Next']")).click();
     browser().element(firstHarmonizedVariable()).hasText("A_HS_DENTAL_VISIT_LAST");
+  }
+
+  @Test
+  public void has_variables_classification_graphics() {
+    login_as_admin();
+    toggle_all_variable_classification_graphics(true);
+
+    browser().navigate().to("http://localhost/drupal/mica/harmonization-dataset/cptp-coreqx");
+    browser().element(By.xpath("//section[@id='coverage']/h2")).hasText("Variables Classification");
+
+    browser().element(By.xpath("//section[@id='coverage']//div/obiba-nv-chart/nvd3/div[contains(@class, 'title h4')]"))
+        .hasText("Areas of Information");
   }
 
   private org.openqa.selenium.By firstHarmonizedVariable() {

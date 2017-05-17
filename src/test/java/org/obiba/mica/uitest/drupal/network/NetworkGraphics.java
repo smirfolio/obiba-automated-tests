@@ -1,8 +1,8 @@
 package org.obiba.mica.uitest.drupal.network;
 
+import org.junit.Test;
 import org.obiba.mica.uitest.utils.By;
 import org.obiba.mica.uitest.utils.UITester;
-import org.junit.Test;
 import org.openqa.selenium.Keys;
 
 import static org.hamcrest.Matchers.startsWith;

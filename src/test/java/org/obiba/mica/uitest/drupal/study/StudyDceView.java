@@ -68,7 +68,7 @@ public class StudyDceView extends UITester {
     browser().element(currentModalThenRefs("file-search-result-list", "file-size", "[2]")).hasText("152.26 KB");
     browser().element(By.xpath("//a[@title='Search 10 most recently modified files']")).click();
     browser().pause(200);
-    browser().element(currentModalThenRefs("file-search-result-list", "file-size", "[2]")).hasText("118.31 KB");
+    browser().element(currentModalThenRefs("file-search-result-list", "file-size", "[1]")).hasText("118.31 KB");
   }
 
   @Test
