@@ -1,12 +1,17 @@
 package org.obiba.mica.uitest.drupal.network;
 
+import java.util.List;
+
+import org.obiba.mica.uitest.drupal.DrupalUITester;
 import org.obiba.mica.uitest.utils.By;
-import org.obiba.mica.uitest.utils.UITester;
 import org.junit.Test;
+import org.openqa.selenium.WebElement;
+
+import com.google.common.collect.Lists;
 
 import static org.hamcrest.Matchers.is;
 
-public class NetworkView extends UITester {
+public class NetworkView extends DrupalUITester {
 
   @Test
   public void validate_navigation_to_network_details() throws Exception {
@@ -56,6 +61,27 @@ public class NetworkView extends UITester {
     browser().pause(500);
 
     validateFirstMembership();
+  }
+
+  @Test
+  public void has_variables_classification_graphics() {
+    login_as_admin();
+    toggle_all_variable_classification_graphics(true);
+
+    browser().navigate().to("http://localhost/drupal/mica/network/qsc");
+    browser().element(By.xpath("//section[@id='coverage']/h2")).hasText("Variables Classification");
+
+    List<WebElement> graphicTitles = browser().wrappedDriver().findElements(
+        By.xpath("//section[@id='coverage']//div/obiba-nv-chart/nvd3/div[contains(@class, 'title h4')]"));
+
+    List<String> titles = Lists.newArrayList(
+        "Additional information", "Areas of Information",
+        "Constructs for cognitive functioning and mental health",
+        "Constructs for general health", "Constructs for life habits", "Constructs for the social domain");
+
+    for(WebElement graphicTitle : graphicTitles) {
+      assert titles.indexOf(graphicTitle.getText()) > -1;
+    }
   }
 
   private void validateFirstMembership() {

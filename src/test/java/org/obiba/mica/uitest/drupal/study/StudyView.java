@@ -1,12 +1,19 @@
 package org.obiba.mica.uitest.drupal.study;
 
+import java.util.List;
+
+import org.obiba.mica.uitest.drupal.DrupalUITester;
 import org.obiba.mica.uitest.utils.By;
-import org.obiba.mica.uitest.utils.UITester;
 import org.junit.Test;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
+import com.vtence.mario.WebElementDriver;
 
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.startsWith;
 
-public class StudyView extends UITester {
+public class StudyView extends DrupalUITester {
 
   @Test
   public void validate_navigation_to_study_details() throws Exception {
@@ -64,6 +71,60 @@ public class StudyView extends UITester {
     browser().element(currentModalBy()).element(By.className("close")).click();
     browser().pause(300);
     validateThirdMembership();
+  }
+
+  @Test
+  public void validate_study_network_link_sends_to_network() {
+    browser().navigate().to("http://localhost/drupal/mica/study/cls");
+    browser().element(By.xpath("//section[@id='networks']//table//tbody/tr/td/a[text()='IALSA']")).click();
+    browser().pause(200);
+    browser().element(By.xpath("//h1")).hasText(startsWith("IALSA"));
+  }
+
+  @Test
+  public void validate_study_network_counts_sends_to_search() {
+    browser().navigate().to("http://localhost/drupal/mica/study/cls");
+    browser().element(By.xpath("//section[@id='networks']//table//tbody/tr/td/a[text()='7']/../..//a[text()='7']")).click();
+    browser().pause(200);
+    browser().element(By.ref("search-counts", "studies")).hasText("7");
+  }
+
+  @Test
+  public void has_variables_classification_graphics() {
+    login_as_admin();
+    toggle_all_variable_classification_graphics(true);
+
+    browser().navigate().to("http://localhost/drupal/mica/study/cag");
+    browser().element(By.xpath("//section[@id='coverage']/h2")).hasText("Variables Classification");
+    browser().element(By.xpath("//section[@id='coverage']//div[contains(@class, 'title h4')]")).hasText("Areas of Information");
+  }
+
+  @Test
+  public void check_population_dce_popups_when_more_then_one_population() {
+    browser().navigate().to("http://localhost/drupal/mica/study/cls");
+
+    WebElement populationTab = browser().wrappedDriver().findElement(By.xpath("//li[@test-ref='population-tab'][1]/a"));
+    String href = populationTab.getAttribute("href");
+    String tabContentId = href.substring(href.indexOf('#') + 1);
+    String dceLinksXpath = "//div[@id='" + tabContentId + "']" + "//table[@id='variables_overview']//tbody//a[@data-target]";
+
+    List<WebElement> dceLinks = browser().wrappedDriver().findElements(By.xpath(dceLinksXpath));
+    Actions actions = new Actions(browser().wrappedDriver());
+
+    for(WebElement dceLink : dceLinks) {
+      String description = browser().wrappedDriver()
+          .findElement(By.xpath("//div[@id='" + tabContentId + "']//tbody//a[@data-target='" + dceLink.getAttribute("data-target") + "']" + "/../..//div[@class='markdown']"))
+          .getText().replace("...", "");
+
+      String dcePopupTarget = dceLink.getAttribute("data-target").substring(1);
+
+      actions.moveToElement(dceLink).click().perform();
+      browser()
+          .element(By.xpath("//div[@id='" + dcePopupTarget + "']//div[@test-ref='modal-dce-description']//div[@class='markdown']/p"))
+          .hasText(startsWith(description));
+      browser().element(By.xpath("//div[@id='" + dcePopupTarget + "']//button[@data-dismiss='modal']")).click();
+      browser().pause(500);
+    }
   }
 
   private void validateFirstMembership() {

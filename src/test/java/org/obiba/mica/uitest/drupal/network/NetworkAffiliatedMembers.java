@@ -35,7 +35,7 @@ public class NetworkAffiliatedMembers extends UITester {
     //Search network
     browser().element(By.xpath("(//input[@type='search'])[1]")).clear();
     browser().element(By.xpath("(//input[@type='search'])[1]")).type("qsc");
-    browser().element(By.xpath("(//div[@id='person-table_wrapper']//td)[4]")).hasText("QSC (Investigators)");
+    browser().element(By.xpath("//td[contains(@class, 'dataTables_empty')]")).hasText("No matching records found");
   }
 
   @Test
@@ -79,6 +79,6 @@ public class NetworkAffiliatedMembers extends UITester {
   }
 
   private void assertThatWeAreOnSecondPage() {
-    browser().element(By.xpath("(//div[@id='person-table_wrapper']//td)[1]")).hasText("Claude Galand");
+    browser().element(By.xpath("(//div[@id='person-table_wrapper']//td)[1]")).hasText("Dr. Tamàs Fülöp");
   }
 }
