@@ -11,12 +11,14 @@ public class DrupalUITester extends UITester {
   protected void login_as_admin() {
     browser().navigate().to("http://localhost/drupal");
 
-    browser().element(By.xpath("//a[contains(text(), 'Sign In')]")).click();
+    if (!isIsLoggedIn()) {
+      browser().element(By.xpath("//a[contains(text(), 'Sign In')]")).click();
 
-    browser().element(By.xpath("//input[@id='edit-name']")).type("administrator");
-    browser().element(By.xpath("//input[@id='edit-pass']")).type("password");
+      browser().element(By.xpath("//input[@id='edit-name']")).type("administrator");
+      browser().element(By.xpath("//input[@id='edit-pass']")).type("password");
 
-    browser().element(By.xpath("//button[@id='edit-submit']")).click();
+      browser().element(By.xpath("//button[@id='edit-submit']")).click();
+    }
   }
 
   protected void toggle_all_variable_classification_graphics(boolean enable) {
@@ -31,5 +33,10 @@ public class DrupalUITester extends UITester {
     }
 
     browser().element(By.xpath("//input[@id='edit-other-settings-action-submit']")).click();
+  }
+
+  boolean isIsLoggedIn() {
+    List<WebElement> elements = browser().wrappedDriver().findElements(org.openqa.selenium.By.xpath("//div[@id='toolbar']"));
+    return elements.size() > 0;
   }
 }

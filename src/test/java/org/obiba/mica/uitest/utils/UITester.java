@@ -33,7 +33,7 @@ public class UITester {
       ChromeDriverService chromeDriverService = new ChromeDriverService.Builder()
               .usingDriverExecutable(new File(homeDriver + "/chromeDriver/chromedriver"))
               .usingAnyFreePort()
-              .withEnvironment(ImmutableMap.of("DISPLAY", ":2"))
+//              .withEnvironment(ImmutableMap.of("DISPLAY", ":2"))
               .build();
       chromeDriverService.start();
       ChromeDriver chromeDriver = new ChromeDriver(chromeDriverService, options);
