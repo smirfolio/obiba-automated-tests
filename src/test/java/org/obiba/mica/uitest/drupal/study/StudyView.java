@@ -8,8 +8,6 @@ import org.junit.Test;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import com.vtence.mario.WebElementDriver;
-
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.startsWith;
 
@@ -91,7 +89,7 @@ public class StudyView extends DrupalUITester {
 
   @Test
   public void has_variables_classification_graphics() {
-    login_as_admin();
+    login_to_drupal_as_admin();
     toggle_all_variable_classification_graphics(true);
 
     browser().navigate().to("http://localhost/drupal/mica/study/cag");
