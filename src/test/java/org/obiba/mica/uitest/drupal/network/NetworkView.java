@@ -65,7 +65,7 @@ public class NetworkView extends DrupalUITester {
 
   @Test
   public void has_variables_classification_graphics() {
-    login_as_admin();
+    login_to_drupal_as_admin();
     toggle_all_variable_classification_graphics(true);
 
     browser().navigate().to("http://localhost/drupal/mica/network/qsc");

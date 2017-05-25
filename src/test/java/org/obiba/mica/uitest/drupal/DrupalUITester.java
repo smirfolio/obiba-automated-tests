@@ -8,14 +8,18 @@ import org.openqa.selenium.WebElement;
 
 public class DrupalUITester extends UITester {
 
-  protected void login_as_admin() {
+  protected void login_to_drupal_as_admin() {
+    login_to_drupal("administrator", "password");
+  }
+
+  protected void login_to_drupal(String username, String password) {
     browser().navigate().to("http://localhost/drupal");
 
-    if (!isIsLoggedIn()) {
+    if (!isIsLoggedInToDrupal()) {
       browser().element(By.xpath("//a[contains(text(), 'Sign In')]")).click();
 
-      browser().element(By.xpath("//input[@id='edit-name']")).type("administrator");
-      browser().element(By.xpath("//input[@id='edit-pass']")).type("password");
+      browser().element(By.xpath("//input[@id='edit-name']")).type(username);
+      browser().element(By.xpath("//input[@id='edit-pass']")).type(password);
 
       browser().element(By.xpath("//button[@id='edit-submit']")).click();
     }
@@ -35,7 +39,7 @@ public class DrupalUITester extends UITester {
     browser().element(By.xpath("//input[@id='edit-other-settings-action-submit']")).click();
   }
 
-  boolean isIsLoggedIn() {
+  boolean isIsLoggedInToDrupal() {
     List<WebElement> elements = browser().wrappedDriver().findElements(org.openqa.selenium.By.xpath("//div[@id='toolbar']"));
     return elements.size() > 0;
   }
